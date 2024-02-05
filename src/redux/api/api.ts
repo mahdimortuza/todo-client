@@ -28,8 +28,12 @@ export const baseApi = createApi({
     }),
 
     updateTodo: builder.mutation({
-      query: (data) => {
-        return { url: "/task", method: "PUT", body: data };
+      query: (options) => {
+        return {
+          url: `/task/${options.id}`,
+          method: "PUT",
+          body: options.data,
+        };
       },
       invalidatesTags: ["todo"],
     }),
